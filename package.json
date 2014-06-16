@@ -1,0 +1,28 @@
+{
+  "name": "device-library",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joshrp/device-library"
+  },
+  "author": "Josh Priestley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshrp/device-library/issues"
+  },
+  "homepage": "https://github.com/joshrp/device-library",
+  "dependencies": {
+    "dynamodb": "^0.3.6",
+    "q": "^1.0.1",
+    "restify": "^2.8.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.20.1",
+    "sinon": "^1.10.2"
+  }
+}
