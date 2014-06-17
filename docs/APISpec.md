@@ -13,7 +13,7 @@ API:
 			}
 		}]
 
-	PUT /devices 
+	POST /devices 
 		Req: {
 			id: ''
 			name: 'iPhone 3GS'
@@ -24,7 +24,7 @@ API:
  			failue: 'ID taken'
  		}
 
- 	POST /devices/{id}
+ 	PUT /devices/{id}
  		Req: { // All optional
  			id: ''
 			name: 'iPhone 3GS'
@@ -48,7 +48,7 @@ API:
 			email: ''
  		}]
 
- 	PUT /users 
+ 	POST /users 
  		Req: {
 			name: ''
 			team: ''
@@ -61,7 +61,7 @@ API:
  			failure: 'Name should be string'
  		}
 
- 	POST /users/{id} 
+ 	PUT /users/{id} 
  		Req: {
 			name: ''
 			team: ''
