@@ -1,5 +1,5 @@
 module.exports = function (app) {
 	return {
-		port: 80
+		port: 1234
 	}
 }
