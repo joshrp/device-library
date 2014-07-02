@@ -1,7 +1,5 @@
 var app = require('./lib/server');
 
-app.config = require('./config')(app);
-
-app.listen(config.port, config.ip, function () {
-  console.log( "Listening on " + config.ip + ", port " + config.port )
+app.listen(app.config.port, app.config.ip, function () {
+  console.log( "Listening on " + app.config.ip + ", port " + app.config.port )
 });

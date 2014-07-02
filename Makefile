@@ -21,7 +21,7 @@ dynamodb-start: ${TMPDIR} ${DYNAMO_TGZ}
 ifeq (,$(wildcard $(DYNAMO_PID)))
 	tar zxf ${DYNAMO_TGZ}	-C ${TMPDIR}
 	java 	-Djava.library.path=${TMPDIR}/DynamoDBLocal_lib \
-				-jar ${TMPDIR}/DynamoDBLocal.jar & \
+				-jar ${TMPDIR}/DynamoDBLocal.jar -inMemory & \
 				echo "$$!" > "${DYNAMO_PID}"
 endif
 
@@ -32,6 +32,8 @@ ifneq (, $(wildcard ${DYNAMO_PID}))
 endif
 
 mocha:
-	NODE_PATH=./lib ./node_modules/mocha/bin/mocha ./lib/test/routes \
+	NODE_PATH=./lib \
+	DEV_LIB_CONFIG=test \
+	./node_modules/mocha/bin/mocha ./lib/test \
     --recursive \
     --require should
