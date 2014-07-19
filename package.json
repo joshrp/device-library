@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/joshrp/device-library",
   "dependencies": {
-    "dynamodb": "^0.3.6",
     "q": "^1.0.1",
     "restify": "^2.8.1",
     "dino": "git+https://github.com/DaMouse404/dino.git#develop"
@@ -25,6 +24,8 @@
   "devDependencies": {
     "mocha": "^1.20.1",
     "sinon": "^1.10.2",
-    "chai": "^1.9.1"
+    "chai": "^1.9.1",
+    "faker": "^1.0.0",
+    "sinon-chai": "^2.5.0"
   }
 }
