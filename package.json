@@ -16,14 +16,25 @@
     "url": "https://github.com/joshrp/device-library/issues"
   },
   "homepage": "https://github.com/joshrp/device-library",
+  "config": {
+    "blanket": {
+      "pattern": "lib"
+    }
+  },
   "dependencies": {
-    "dynamodb": "^0.3.6",
     "q": "^1.0.1",
     "restify": "^2.8.1",
     "dino": "git+https://github.com/DaMouse404/dino.git#develop"
   },
   "devDependencies": {
     "mocha": "^1.20.1",
-    "sinon": "^1.10.2"
+    "sinon": "^1.10.2",
+    "chai": "^1.9.1",
+    "faker": "^1.0.0",
+    "sinon-chai": "^2.5.0",
+    "dynalite": "^0.3.7",
+    "mocha-lcov-reporter": "0.0.1",
+    "blanket": "^1.1.6",
+    "coveralls": "^2.11.1"
   }
 }
