@@ -1,4 +1,4 @@
-var app 		= require('../server'),
+var app 		= require('server'),
 		Q				= require('q'),
 		Users		= require('models/users'),
 		Devices	= require('models/devices');

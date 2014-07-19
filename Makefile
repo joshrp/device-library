@@ -34,6 +34,5 @@ endif
 mocha:
 	NODE_PATH=./lib \
 	DEV_LIB_CONFIG=test \
-	./node_modules/mocha/bin/mocha ./lib/test \
-    --recursive \
-    --require should
+	./node_modules/mocha/bin/mocha ./test \
+    --recursive
