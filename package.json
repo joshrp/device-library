@@ -18,7 +18,8 @@
   "homepage": "https://github.com/joshrp/device-library",
   "config": {
     "blanket": {
-      "pattern": "lib"
+      "pattern": "lib",
+      "data-cover-never": ["node_modules", "test"]
     }
   },
   "dependencies": {
