@@ -1,29 +1,33 @@
-var app 		= require('server'),
-		Q				= require('q'),
-		Users		= require('models/users'),
-		Devices	= require('models/devices');
+var app				= require('server'),
+		Q					= require('q'),
+		dynalite	= require('dynalite')(),
+		Users			= require('models/users'),
+		Devices		= require('models/devices');
 
-before(function(done) {
-  app.listen('test.sock', function () {
-    console.log( "Listening on test.sock" );
-    done();
-  });
+before(function() {
+	return Q.allSettled([
+		Q.ninvoke(dynalite, 'listen', 8000),
+		Q.ninvoke(app, 'listen', 'test.sock')
+	]);
 });
 
 after(function() {
-  app.close();
+	return Q.allSettled([
+		Q.ninvoke(dynalite, 'close'),
+		Q.ninvoke(app, 'close')
+	]);
 });
 
-beforeEach(function(done) {
-	Q.all([
-					Q.nfcall(Devices.schema.createTable),
-					Q.nfcall(Users.schema.createTable)
-	]).done(function(){ done() });
+beforeEach(function() {
+	return Q.allSettled([
+		Q.ninvoke(Devices.schema, 'createTable'),
+		Q.ninvoke(Users.schema,   'createTable')
+	]);
 });
 
-afterEach(function(done) {		
-	Q.all([
-					Q.nfcall(Devices.schema.deleteTable),
-					Q.nfcall(Users.schema.deleteTable)
-	]).done(function(){ done(); });
+afterEach(function() {
+	return Q.allSettled([
+		Q.ninvoke(Devices.schema, 'deleteTable'),
+		Q.ninvoke(Users.schema,   'deleteTable')
+	]);
 });
