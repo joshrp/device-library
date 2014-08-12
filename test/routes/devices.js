@@ -4,6 +4,8 @@ var Q				= require('q');
 var Faker 	= require('faker');
 var Devices = require('models/devices');
 var Users 	= require('models/users');
+var uuid	= require('node-uuid');
+var _		= require('underscore');
 
 var DeviceController = require('routes/devices.js');
 
@@ -147,11 +149,52 @@ describe.only('Device model', function() {
     DeviceController.getAll(req, res);
   });
 
-/*	it('Should create a new device', function(done) {
-		var device = Faker.Helpers.randomNumber(404);
-		var req = {
-			method: 'POST',
-			params: { id: device }
+	it('Should create a new device', function(done) {
+		var id = Faker.Helpers.randomNumber(404),
+			saveSpy = sinon.stub().callsArg(0),
+			uuidStub = sinon.stub(uuid, 'v4', function(cb) {
+				return id;
+			}),
+			createStub = sinon.stub(Devices, 'create', function() {
+				return {
+					save: saveSpy
+				};
+			}),
+			device = {
+				name: Faker.Company.companyName(),
+				OS: Faker.Internet.domainWord()
+			},
+			createdDevice = _.extend({id:id}, device);
+			req = {
+				method: 'POST',
+				body: device
+			};
+
+		var res = {
+			setHeader: sinon.spy(),
+			status: sinon.spy(),
+			end: function() {
+				try {
+					createStub.should.have.been.calledOnce;
+					createStub.should.have.been.calledWith(createdDevice);
+
+					saveSpy.should.have.been.calledOnce;
+
+					res.setHeader.should.have.been.calledOnce;
+					res.setHeader.should.have.been.calledWith('Location', ['/devices/', id].join(''));
+					res.status.should.have.been.calledOnce;
+					res.status.should.have.been.calledWith(201);
+
+					uuidStub.restore();
+					createStub.restore();
+
+					done();
+				} catch (e) {
+					done(e);
+				}
+			}
 		};
-	}); */
+
+		DeviceController.create(req, res);
+	});
 });
