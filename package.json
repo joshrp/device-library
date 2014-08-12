@@ -2,7 +2,7 @@
   "name": "device-library",
   "version": "0.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "make test"
   },
@@ -19,13 +19,18 @@
   "config": {
     "blanket": {
       "pattern": "lib",
-      "data-cover-never": ["node_modules", "test"]
+      "data-cover-never": [
+        "node_modules",
+        "test"
+      ]
     }
   },
   "dependencies": {
     "q": "^1.0.1",
     "restify": "^2.8.1",
-    "dino": "git+https://github.com/DaMouse404/dino.git#develop"
+    "dino": "git+https://github.com/DaMouse404/dino.git#develop",
+    "underscore": "^1.6.0",
+    "node-uuid": "^1.4.1"
   },
   "devDependencies": {
     "mocha": "^1.20.1",
